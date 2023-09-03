@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title', 255)->nullable(false);
             $table->dateTime('posted_date')->nullable(false);
             $table->longText('article_contents')->nullable(false);
-            $table->timestamps()->nullable(false);
+            $table->timestamps();
         });
     }
 
