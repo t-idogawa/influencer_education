@@ -21,3 +21,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//管理画面_お知らせ一覧
+Route::get('/articles_admin', [App\Http\Controllers\ArticlesController::class, 'articlesShowList'])->name('articles.show.list');
+
+//管理画面_お知らせ新規登録
+Route::get('/articles_detail_admin', [App\Http\Controllers\ArticlesController::class, 'articlesDetailAdminNew'])->name('articles.detail.admin.new');
+
+//管理画面_お知らせ変更
+Route::post('/articles_detail_admin', [App\Http\Controllers\ArticlesController::class, 'articlesDetailAdmin'])->name('articles.detail.admin');
+
+//管理画面_お知らせ変更→登録
+Route::post('/articles_detail_regist', [App\Http\Controllers\ArticlesController::class, 'articlesRegist'])->name('articles.regist');
+
+//管理画面_お知らせ削除
+Route::post('/articles_delete', [App\Http\Controllers\ArticlesController::class, 'articlesDelete'])->name('articles.delete');
