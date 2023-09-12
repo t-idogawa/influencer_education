@@ -25,20 +25,23 @@ class ArticlesController extends Controller
         $modal_title = "";
         $modal_id = "";
 
-        return view('articles_admin', compact('articles', ['modal_title', 'modal_id']));
+        return view('admin/articles_admin', compact('articles', ['modal_title', 'modal_id']));
     }
 
     
     // 管理画面_お知らせ変更遷移時（新規登録）
     public function articlesDetailAdminNew()
     {
-        $articles = "";
-        $id = "";
-        $posted_date = "";
-        $title = "";
-        $article_contents = "";
+        $articles = Articles::query()->first();;
+        $empty = new Articles();
+        $articles->setRelation('articles', $empty);
 
-        return view('articles_detail_admin', compact('articles', ['id', 'posted_date', 'title', 'article_contents']));
+        $articles->id = NULL;
+        $articles->posted_date = "";
+        $articles->title = "";
+        $articles->article_contents = "";
+
+        return view('admin/articles_detail_admin', ['articles' => $articles]);
     }
     
     // 管理画面_お知らせ変更遷移時（変更）
@@ -46,22 +49,21 @@ class ArticlesController extends Controller
     {
         $articles = Articles::find($_POST['id']);
         $articles->date = Carbon::createFromFormat('Y-m-d H:i:s', $articles->posted_date)->format('Y-m-d');
-        return view('articles_detail_admin', ['articles' => $articles]);
+        return view('admin/articles_detail_admin', ['articles' => $articles]);
     }
     
     // 管理画面_お知らせ変更登録時
     public function articlesRegist(ArticleRequest $request) {
         $request_id = $request->id;
-
         // トランザクション開始
         DB::beginTransaction();
 
         try {
             $query = new Articles();
-            if($request_id !== null){
-                $query->editArticle($request);
-            }else{
+            if($request_id == '0' || $request_id == NULL){
                 $query->registArticle($request);
+            }else{
+                $query->editArticle($request);
             }
             DB::commit();
         } catch (\Exception $e) {
