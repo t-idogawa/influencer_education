@@ -30,7 +30,25 @@ h1.title{
     margin: 15px 18px;
 }
 
+/* ユーザー画面 */
+/* articles__box */
+#articles__box{
+    margin: 15px 18px 0;
+}
 
+#articles__box p.date{
+    margin: 0;
+}
+
+#articles__box h1.title{
+    margin: 0;
+}
+
+#articles__box p.contents{
+    margin: 30px 0 0;
+}
+
+/* 管理画面 */
 /* articles_admin */
 .regist__button__box{
     margin: 0;

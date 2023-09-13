@@ -11,6 +11,17 @@ use Carbon\Carbon;
 
 class ArticlesController extends Controller
 {
+    // ユーザー画面_お知らせ
+    public function articlesDetail()
+    {
+        $articles = Articles::find($_GET['id']);
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $articles->posted_date)->format('Y-m-d');
+        $articles->year = date('Y', strtotime($date));
+        $articles->month = date('n', strtotime($date));
+        $articles->day = date('j', strtotime($date));
+        return view('articles', ['articles' => $articles]);
+    }
+
     // 管理画面_お知らせ一覧
     public function articlesShowList()
     {

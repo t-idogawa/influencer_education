@@ -22,6 +22,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//ユーザー画面_お知らせ一覧
+Route::get('/articles', [App\Http\Controllers\ArticlesController::class, 'articlesDetail'])->name('articles.detail');
+
 //管理画面_お知らせ一覧
 Route::get('/admin/articles_admin', [App\Http\Controllers\ArticlesController::class, 'articlesShowList'])->name('articles.show.list');
 
