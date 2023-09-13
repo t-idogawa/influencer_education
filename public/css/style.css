@@ -1,0 +1,165 @@
+#container{
+    z-index: 10;
+    margin: 0 auto;
+    padding-top: 3px;
+    position: relative;
+    font-size: 18px;
+    width: 85%;
+}
+
+a{
+    text-decoration: none;
+    color: #212529;
+}
+
+.button{
+    padding: 10px 28px;
+    border: 1px solid #646464;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover,
+button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+h1.title{
+    margin: 15px 18px;
+}
+
+/* ユーザー画面 */
+/* articles__box */
+#articles__box{
+    margin: 15px 18px 0;
+}
+
+#articles__box p.date{
+    margin: 0;
+}
+
+#articles__box h1.title{
+    margin: 0;
+}
+
+#articles__box p.contents{
+    margin: 30px 0 0;
+}
+
+/* 管理画面 */
+/* articles_admin */
+.regist__button__box{
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 17px;
+}
+
+.regist__btn{
+    background-color: #169398;
+}
+
+#articles__box__admin{
+    margin: 30px 50px;
+}
+
+#articles__box__admin table td{
+    padding: 10px;
+}
+
+#articles__box__admin table tr td:first-of-type{
+    width: 25%;
+}
+
+#articles__box__admin table tr td:last-of-type{
+    width: 30%;
+}
+
+.articles__button__courner{
+    display: flex;
+}
+
+.fix__btn{
+    background-color: #169398;
+}
+
+.delete__btn{
+    background-color: #FF0000;
+}
+
+
+/* articles_detail_admin */
+#articles__form__courner{
+    margin: 30px 50px;
+}
+
+#articles__form__courner dl{
+    display: flex;
+}
+
+#articles__form__courner dt{
+    width: 10%;
+    font-weight: normal;
+}
+
+#articles__form__courner dd{
+    width: 30%;
+}
+
+#articles__form__courner dd input,
+#articles__form__courner dd textarea{
+    width: 100%;
+}
+
+#articles__form__courner button[type="submit"]{
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #646464;
+    border: none;
+    padding: 2px 80px;
+}
+
+/* modal__courner */
+
+#modal__courner{
+    display: none;
+    width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#modal__courner .modal{
+    width: 50%;
+    height: 50%;
+    background: #fff;
+    display: block;
+    margin: 0 auto;
+    padding: 5%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#modal__courner .modal p{
+    text-align: center;
+}
+
+.modal__button__courner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.yes__btn{
+    background-color: #FF0000;
+}
+
+.no__btn{
+    background-color: #fff;
+    color: #000;
+}
