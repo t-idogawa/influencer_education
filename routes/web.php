@@ -36,5 +36,5 @@ Route::get('admin/logout', [App\Http\Controllers\admin\LoginController::class,'l
 Route::post('admin/logout', [App\Http\Controllers\admin\LoginController::class,'logout'])->name('admin.logout'); 
 Route::view('/admin/register', 'admin/register')->name('admin.register');
 Route::post('/admin/register', [App\Http\Controllers\admin\RegisterController::class, 'register']);
-Route::view('/admin/home', 'admin/home')->middleware('auth:admin')->name('admin.home');
+Route::view('/admin/home', 'admin/home')->name('admin.home')->middleware('auth:admin');
 

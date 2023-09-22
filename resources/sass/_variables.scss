@@ -2,6 +2,9 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+//Text Size
+$h1-font-size: $font-size-base * 4;
+$h2-font-size: $font-size-base * 2.5;
