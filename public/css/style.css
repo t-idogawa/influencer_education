@@ -1,0 +1,94 @@
+#container{
+    z-index: 10;
+    margin: 0 auto;
+    padding-top: 3px;
+    position: relative;
+    font-size: 18px;
+    width: 85%;
+}
+
+a{
+    text-decoration: none;
+    color: #212529;
+}
+
+.button{
+    padding: 10px 28px;
+    border: 1px solid #646464;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover,
+button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+h1.title{
+    margin: 15px 18px;
+}
+
+/* 管理画面 */
+/* password_detail_admin */
+#profile__form__courner{
+    margin: 30px 130px;
+}
+
+#profile__form__courner .profile__img__box{
+    margin: 15px 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+#profile__form__courner .profile__img__box .profile__img{
+    width: 25%;
+    text-align: center;
+}
+
+#profile__form__courner .profile__img__box .profile__img img{
+    max-width: 100%;
+}
+
+#profile__form__courner .profile__img__box .profile__chenge{
+    margin-left: 15px;
+}
+
+#profile__form__courner dl{
+    display: flex;
+}
+
+#profile__form__courner dt{
+    width: 25%;
+    font-weight: normal;
+}
+
+#profile__form__courner dd{
+    width: 75%;
+}
+
+#profile__form__courner dd input,
+#profile__form__courner dd textarea{
+    width: 100%;
+}
+
+#profile__form__courner .profile__img__box .profile__chenge p,
+#profile__form__courner dd p{
+    color: #FF0000;
+}
+
+#profile__form__courner .password__link{
+    border: 1px solid #CFCFCF;
+    padding: 3px 10px;
+}
+
+#profile__form__courner button[type="submit"]{
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #F26B4A;
+    border: none;
+    padding: 2px 80px;
+}
