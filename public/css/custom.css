@@ -1,0 +1,14 @@
+.btn-header {
+    background-color:lightseagreen;
+    color: white;
+    margin-right: 10px;
+}
+
+.custom-header {
+    background-color: #e25407;
+}
+
+.banner-size {
+    width: 80%;
+    height: auto;
+}
