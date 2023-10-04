@@ -22,9 +22,9 @@
       <h3 class="">お知らせ</h3>
          <div class="card" >
              <div class="card-body">
-                 <p>2023年00月00日 お知らせ１</p>
-                 <p>2023年00月00日 お知らせ２</p>
-                 <p>2023年00月00日 お知らせ３</p>
+                @foreach ($articles as $article)
+                  <a href="">{{$article->posted_date}} {{ $article->title }}</a>
+                @endforeach
              </div>
          </div>
     </div>

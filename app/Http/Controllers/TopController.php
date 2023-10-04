@@ -15,11 +15,11 @@ class TopController extends Controller
      */
     public function index() //お知らせ一覧データ取得＆バナーデータ取得と表示
     {
-        //articlesマージ後に表示させる
-        // $query = new Article();
-        // $articles = $query->getList();
+        //お知らせ一覧データ取得
+        $query = new Articles();
+        $articles = $query->getList();
 
-        return view('UserTop');
+        return view('UserTop', compact('articles'));
     }
 
 
