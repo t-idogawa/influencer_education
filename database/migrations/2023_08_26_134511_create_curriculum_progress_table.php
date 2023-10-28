@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('curriculum_progress', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255)->nullable(false);
-            $table->dateTime('posted_date')->nullable(false);
-            $table->longText('article_contents')->nullable(false);
-            $table->timestamps()->nullable(false);
+            $table->integer('curriculums_id');
+            $table->integer('users_id');
+            $table->tinyInteger('clear_flag');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('curriculum_progress');
     }
 };

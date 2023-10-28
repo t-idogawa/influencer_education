@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserRequest; //追加
 
 class RegisterController extends Controller
 {
@@ -47,14 +48,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+    
+     protected function validator(array $data)
+     {
+         return Validator::make($data, [
+             'name' => ['required', 'string', 'max:255'],
+             'name_kana' => ['required', 'string','katakana','max:255'], //AppServiceProviderにカタカナ入力のルール追加し引用
+             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+             'password' => ['required', 'string', 'min:8', 'confirmed'],
+             'profile_image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg','max:2048'],
+             'classes_id' => []
+         ]);
+     }
+     
 
     /**
      * Create a new user instance after a valid registration.
@@ -66,8 +72,11 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'name_kana' => $data['name_kana'], //追加
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'profile_image' => $data['profile_image'], //nullで追加
+            'classes_id' => $data['classes_id'] //1年生で追加
         ]);
     }
 }

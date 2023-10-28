@@ -1,0 +1,13 @@
+{
+    "Login": "ログイン",
+    "E-Mail Address": "メールアドレス",
+    "Password": "パスワード",
+    "Remember Me": "ログイン状態を保存する",
+    "Forgot Your Password?": "パスワードをお忘れですか?",
+    "Register": "新規登録",
+    "Name": "氏名",
+    "Name_Kana": "カナ",
+    "Confirm Password": "パスワード確認",
+    "Reset Password": "パスワードリセット",
+    "Logout": "ログアウト"
+}
