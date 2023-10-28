@@ -9,6 +9,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="{{ asset('js/check.js') }}" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
