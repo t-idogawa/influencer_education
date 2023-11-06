@@ -2,6 +2,27 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+//ログイン画面　管理画面ログイン及び新規管理ユーザー登録のテキストサイズ
+.login-text {
+    font-size: 64px;
+}
+
+//小学校のボタン
+$primary-school: #72ebf2;
+.primary-school {
+    background: $primary-school;
+}
+//中学校のボタン
+$junior-highschool-btn: #6eecc8;
+.junior-highschool-btn {
+    background: $junior-highschool-btn;
+}
+//高校のボタン
+$highschool-btn: #52cf3c;
+.highschool-btn {
+    background: $highschool-btn;
+}
