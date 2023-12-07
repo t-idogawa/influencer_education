@@ -5,15 +5,29 @@
 <div class="container">
     <div class="row">
         <a href="">←戻る</a>
-        <div class="col-md-6 text-center movie">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/-cX9tXJEq1U?si=-nLQL35kV_11K--V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
+        <!-- 左側動画表示部分 時間内なら動画、時間外なら画像を表示 -->
+        @if($curriculums->alway_delivery_flg === 0)
+            <div class="col-md-6 text-center">
+              <img src="{{ asset('storage/'. $curriculums->thumbnail) }}" alt="" class="thumbnail">
+            </div>
+        @elseif($curriculums->alway_delivery_flg === 1)
+            <div class="col-md-6 text-center movie">
+              <iframe src="$curriculums->video_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>></iframe>
+            </div>
+        @else <!-- 仮 -->
+            <div class="col-md-6 text-center">
+              <img src="{{ asset('storage/'. $curriculums->thumbnail) }}" alt="" class="">
+            </div>
+        @endif
+        <!-- 右側ボタン部分 -->
         <div class="col-md-6 align-items-center d-flex justify-content-center">
-         @if($progress === '' || $progress === 0) 
+         @if(($progress === '' || $progress === 0) && $curriculums->alway_delivery_flg === 1) <!-- $progressが空文字または0、かつ配信時間内 -->
            <button id="check-btn" class="btn btn-clear btn-lg" data-id="{{ $curriculums->id }}">受講しました</button>
-         @elseif(isset($progress) && $progress === 1)
+         @elseif(($progress === '' || $progress === 0) && $curriculums->alway_delivery_flg === 0) <!-- $progressが空文字または0、かつ配信時間外 -->
+           <button id="check-btn" class="btn btn-clear btn-lg" data-id="{{ $curriculums->id }}" disabled>配信時間外</button>
+         @elseif(isset($progress) && $progress === 1) <!--　$progressが設定されている&1の場合 -->
            <button id="check-btn" class="btn btn-clear btn-lg" data-id="{{ $curriculums->id }}" disabled>受講済み</button>
-         @else
+         @else <!-- $progressが0でも1でもない場合(想定していない数字) -->
            <button id="check-btn" class="btn btn-clear btn-lg" data-id="{{ $curriculums->id }}">受講しました</button>
          @endif
         </div>

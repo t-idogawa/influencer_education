@@ -18,8 +18,12 @@ class Curriculums extends Model
         return $this->belongsTo(Classes::class, 'classes_id');
     }
 
+    public function deliveryTime() {
+        return $this->hasMany(deliveryTime::class);
+    }
+
     public function getList() {
-        // curriculumslassesテーブルからデータを取得
+        // curriculumsテーブルからデータを取得
         $curriculums = DB::table('curriculums')->get();
 
         return $curriculums;
