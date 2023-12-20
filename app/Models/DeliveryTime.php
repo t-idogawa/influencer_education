@@ -17,15 +17,16 @@ class DeliveryTime extends Model
 
     public function getDeliveryTime($id) {
         //現在時刻の取得
-        $nowTime = Carbon::now();
+        $nowTime = Carbon::now()->format('H:i');
+        
         //該当のcurriculums_idに紐付いたdelivery_timesテーブルのレコードを取得
         $recode = DB::table('delivery_times')->where('curriculums_id', $id)->first();
         //現在時刻が時間内か時間外かでalways_delivery_flgの値を変更して保存 always_delivery_flgの初期値を変数に保存
         if($recode) {
-            $startTime = Carbon::parse($recode->delivery_from);
-            $endTime = Carbon::parse($recode->delivery_to);
+            $startTime = Carbon::parse($recode->delivery_from)->format('H:i');
+            $endTime = Carbon::parse($recode->delivery_to)->format('H:i');
 
-            if($nowTime->between($startTime, $endTime)) {
+            if($nowTime >= $startTime && $nowTime <= $endTime) {
                 DB::table('curriculums')->where('id', $id)->update(['alway_delivery_flg' => 1]);
             } else {
                 DB::table('curriculums')->where('id', $id)->update(['alway_delivery_flg' => 0]);
@@ -40,6 +41,29 @@ class DeliveryTime extends Model
         $lesson = DB::table('delivery_times')->where('curriculums_id', $id)->get();
 
         return $lesson;
+    }
+
+    public function getViewTime($id) {
+        //該当curriculum_idに紐ついたレコード取得
+        //$recode = DB::table('delivery_times')->where('curriculums_id', $id)->first(); 
+        //dd($recode);
+        // if ($recode === null) {
+        //     //デフォルトの開始時刻と終了時刻を設定する
+        //     return ['startTime' => '00:00', 'endTime' => '00:00'];
+        // }
+        // $startTime = Carbon::parse($recode->delivery_from)->format('H:i');
+        // $endTime = Carbon::parse($recode->delivery_to)->format('H:i');
+        //dd($startTime, $endTime);
+        //return['startTime' => $startTime, 'endTime' => $endTime];
+
+        $currentDateTime = Carbon::now()->format('H:i');
+        $activeTime = DeliveryTime::where('curriculums_id', $id)
+                                  ->where('delivery_from', '<=', $currentDateTime)
+                                  ->where('delivery_to', '>=', $currentDateTime)
+                                  ->get();
+        //dd($activeTime);
+        return $activeTime;
+
     }
 
 }

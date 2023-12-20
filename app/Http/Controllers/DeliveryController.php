@@ -6,25 +6,41 @@ use App\Models\Curriculums;
 use App\Models\Classes;
 use App\Models\CurriculumProgress;
 use App\Models\DeliveryTime;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class DeliveryController extends Controller
 {
     public function show($id)
     {
         $deliveryInstance = new DeliveryTime();
-        $delivery = $deliveryInstance->getDeliveryTime($id); //変数を返す必要があるか？
         $curriculums = Curriculums::find($id);
-        $time = $deliveryInstance->getTime($id);
-        $alwayFlg = $curriculums->alway_delivery_flg;
-        //dd($alwayFlg);
-        //dd($time);
-        //dd($curriculums);
+        //nullの原因を特定する
+        //dd($id);
+        // if($curriculums === null) {
+        //     Log::error("Curriculums not found for ID: $id");
+        // }
+        //$deliveryFlg = 1;
+        $deliveryFlg = $curriculums->alway_delivery_flg; //元々の値を取得
+        //dd($deliveryFlg);
+        if($deliveryFlg === 1) {
+            $viewFlg = true;
+        } else {
+            $span = $deliveryInstance->getViewTime($id);
+            
+            if($span) {
+                $viewFlg = true;
+            } else {
+                $viewFlg = false;
+            }
+        };
         //$user = auth()->id(); 現在認証しているユーザーのIDを取得 各機能連携後にwhere文の引数を$userに変更する
         //CurriculumProgressテーブルのcurriculums_idとuser_idに合致したレコードのclear_flgを$progressに代入
         $progress = CurriculumProgress::where('curriculums_id', $id)->where('users_id', 1)->value('clear_flg');
 
-        return view('delivery', compact('curriculums', 'progress', 'alwayFlg'));
+        return view('delivery', compact('curriculums', 'progress', 'viewFlg'));
     }
 
     public function update(Request $request)

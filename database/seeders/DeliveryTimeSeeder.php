@@ -21,16 +21,16 @@ class DeliveryTimeSeeder extends Seeder
             [
                 'id' => 1,
                 'curriculums_id' => 1,
-                'delivery_from' => Carbon::createFromTime(9, 0),
-                'delivery_to' => Carbon::createFromTime(19, 0),
+                'delivery_from' => Carbon::createFromFormat('H:i', '09:00'),
+                'delivery_to' => Carbon::createFromFormat('H:i', '19:00'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
                 'id' => 2,
                 'curriculums_id' => 2,
-                'delivery_from' => Carbon::createFromTime(19, 30),
-                'delivery_to' => Carbon::createFromTime(23, 0),
+                'delivery_from' => Carbon::createFromFormat('H:i', '19:30'),
+                'delivery_to' => Carbon::createFromFormat('H:i', '23:30'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ]
