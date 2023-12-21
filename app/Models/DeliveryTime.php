@@ -60,8 +60,9 @@ class DeliveryTime extends Model
         $activeTime = DeliveryTime::where('curriculums_id', $id)
                                   ->where('delivery_from', '<=', $currentDateTime)
                                   ->where('delivery_to', '>=', $currentDateTime)
-                                  ->get();
+                                  ->count();
         //dd($activeTime);
+        //dd($currentDateTime);
         return $activeTime;
 
     }

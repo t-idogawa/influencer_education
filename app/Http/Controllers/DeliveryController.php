@@ -30,12 +30,13 @@ class DeliveryController extends Controller
         } else {
             $span = $deliveryInstance->getViewTime($id);
             
-            if($span) {
+            if($span != 0) {
                 $viewFlg = true;
             } else {
                 $viewFlg = false;
             }
         };
+        //dd($viewFlg);
         //$user = auth()->id(); 現在認証しているユーザーのIDを取得 各機能連携後にwhere文の引数を$userに変更する
         //CurriculumProgressテーブルのcurriculums_idとuser_idに合致したレコードのclear_flgを$progressに代入
         $progress = CurriculumProgress::where('curriculums_id', $id)->where('users_id', 1)->value('clear_flg');

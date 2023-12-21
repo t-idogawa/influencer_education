@@ -8,7 +8,7 @@
         <!-- 左側動画表示部分 時間内なら動画、時間外なら画像を表示 -->
         @if($viewFlg === true)
             <div class="col-md-6 text-center movie">
-              <iframe src="$curriculums->video_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>></iframe>
+              <iframe src="{{ $curriculums->video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>></iframe>
             </div>
         @elseif($viewFlg === false)
             <div class="col-md-6 text-center">
